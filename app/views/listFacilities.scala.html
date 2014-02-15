@@ -1,0 +1,51 @@
+@(facilities: java.util.ArrayList[com.fms.facility.IFacility])
+@import helper._
+
+@title = {Facilities Dashboard}
+
+@main(title, nav = "dashboard") {
+
+
+<CENTER>
+
+
+    <h1><a href="">ListAllFacilities()</a> </h1>
+
+    @if(facilities.isEmpty) {
+    <div class="alert-message error">
+        <p><h2><strong>Oops! </strong> There are no facilites in the database</h2></p>
+    </div>
+    }
+
+    <h1>@facilities.size Facility(s) in Database</h1>
+
+    <table border="1" cellspacing="0">
+        <tr>
+            <td style="fontWeight:12">FacilityID</td>
+            <td>FacilityName</td>
+            <td>OfficeAddress</td>
+            <td>FacilitySize</td>
+            <td>NumParking</td>
+            <td>FacilityManager</td>
+            <td>View Units</td>
+
+
+        </tr>
+        @for(facility <- facilities) {
+
+        <tr>
+            <td>@facility.getFacilityId()</td>
+            <td>@facility.getName()</td>
+            <td>@facility.getOfficeAddress()</td>
+            <td>@facility.getSize()</td>
+            <td>@facility.getNumParkingSpace()</td>
+            <td>@facility.getManager()</td>
+            <td>@form(controllers.routes.DashboardController.listUnitsForFacility(facility.getFacilityId())) {
+                <input type="submit" style="color:blue"  value="View Units">
+                }</td>
+        </tr>
+        }
+    </table>
+</CENTER>
+
+}

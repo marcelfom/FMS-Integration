@@ -1,0 +1,40 @@
+@(usages: java.util.ArrayList[com.fms.facilityuse.IUsage])
+@import helper._
+
+@title = {UnitUsage Dashboard}
+
+@main(title, nav = "dashboard") {
+<CENTER>
+
+
+    <h1><a href="">ListAllUsages()</a> </h1>
+
+    @if(usages.isEmpty) {
+    <div class="alert-message error">
+        <p><h2><strong>Oops! </strong> There are no Usages for this Unit.</h2></p>
+    </div>
+    }
+
+    <h1>@usages.size Usage(s) in Database</h1>
+
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>UsageId</td>
+            <td>UsageStartDate</td>
+            <td>UsageEndDate</td>
+            <td>Occupant</td>
+        </tr>
+        @for(usage <- usages) {
+
+        <tr>
+            <td>@usage.getUsageId()</td>
+            <td>@usage.getStartDate()</td>
+            <td>@usage.getEndDate()</td>
+            <td>@usage.getOwner()</td>
+
+        </tr>
+        }
+    </table>
+</CENTER>
+
+}

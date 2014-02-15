@@ -1,0 +1,40 @@
+@(schedules: java.util.ArrayList[com.fms.facilityschedule.ISchedule])
+@import helper._
+
+@title = {Schedules Dashboard}
+
+@main(title, nav = "dashboard") {
+<CENTER>
+
+
+    <h1><a href="">ListAllSchedules()</a> </h1>
+
+    @if(schedules.isEmpty) {
+    <div class="alert-message error">
+        <p><h2><strong>Oops! </strong> There are no Schedules for this Unit.</h2></p>
+    </div>
+    }
+
+    <h1>@schedules.size Schedule(s) in Database</h1>
+
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>ScheduleID</td>
+            <td>ScheduleStartDate</td>
+            <td>ScheduleEndDate</td>
+            <td>Technician</td>
+        </tr>
+        @for(schedule <- schedules) {
+
+        <tr>
+            <td>@schedule.getScheduleId()</td>
+            <td>@schedule.getScheduleStartDate()</td>
+            <td>@schedule.getScheduleEndDate()</td>
+            <td>@schedule.getTechnician()</td>
+
+        </tr>
+        }
+    </table>
+</CENTER>
+
+}

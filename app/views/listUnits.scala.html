@@ -1,0 +1,50 @@
+@(units: java.util.ArrayList[com.fms.facility.IUnit])
+@import helper._
+
+@title = {Units Dashboard}
+
+
+@main(title, nav = "dashboard") {
+<CENTER>
+
+
+
+    <h1><a href="">ListAllUnits()</a> </h1>
+
+    @if(units.isEmpty) {
+    <div class="alert-message error">
+        <p><h2><strong>Oops! </strong> There are no units for this Facility.</h2></p>
+    </div>
+    }
+
+    <h1>@units.size Unit(s) in Database</h1>
+
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>UnitID</td>
+            <td>IsVacant</td>
+            <td>Usages</td>
+            <td>Requests</td>
+            <td>Schedules</td>
+        </tr>
+        @for(unit <- units) {
+
+        <tr>
+            <td>@unit.getUnitId()</td>
+            <td>@unit.isVacant()</td>
+            <td>@form(controllers.routes.DashboardController.listUsagesForUnit(unit.getUnitId())) {
+                <input type="submit" style="color:blue" value="View Usages">
+                }</td>
+            <td>@form(controllers.routes.DashboardController.listRequestsForUnit(unit.getUnitId())) {
+                <input type="submit" style="color:blue" value="View Requests">
+                }</td>
+            <td>@form(controllers.routes.DashboardController.listSchedulesForUnit(unit.getUnitId())) {
+                <input type="submit" style="color:blue" value="View Schedules">
+                }</td>
+
+        </tr>
+        }
+    </table>
+</CENTER>
+
+}

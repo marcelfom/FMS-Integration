@@ -1,0 +1,49 @@
+@(requests: java.util.ArrayList[com.fms.facilityRequest.IRequest])
+@import helper._
+
+@title = {Request Dashboard}
+
+@main(title, nav = "dashboard") {
+<CENTER>
+
+
+    <h1><a href="">ListAllRequests()</a> </h1>
+
+    @if(requests.isEmpty) {
+    <div class="alert-message error">
+        <p><h2><strong>Oops! </strong> There are no requests made for this Unit.</h2></p>
+    </div>
+    }
+
+    <h1>@requests.size Request(s) in Database</h1>
+
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>RequestID</td>
+            <td>RequestType</td>
+            <td>RequestDate</td>
+            <td>Prob Desc</td>
+            <td>RequestedBy</td>
+            <td>Add Schedule(Incomplete)</td>
+            <td>View Schedules</td>
+
+
+        </tr>
+        @for(request <- requests) {
+
+        <tr>
+            <td>@request.getRequestId()</td>
+            <td>@request.getRequestType()</td>
+            <td>@request.getRequestDate()</td>
+            <td>@request.getProblemDescription()</td>
+            <td>@request.getRequestedBy()</td>
+            <td ><input type="submit" style="color:red" value="Add Schedule"></td>
+            <td>@form(controllers.routes.DashboardController.listSchedulesForUnit(request.getRequestId())) {
+                <input type="submit" style="color:blue" value="View Schedules">
+                }</td>
+        </tr>
+        }
+    </table>
+</CENTER>
+
+}
