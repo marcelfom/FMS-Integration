@@ -10,24 +10,21 @@ FMS is to assist facility owners and managers to simplify and improvise the proc
 Built using Play Framework, deployed to Heroku platform
 
 
-To view deployed FMS app:
+[To view deployed FMS app:](http://comp473-fms.herokuapp.com/)
 --------------------
 
         http://comp473-fms.herokuapp.com/
 
 
- 
 
 
-
-
-To clone this repo: 
+[To clone this repo:](https://github.com/X8462/FMS-Integration.git) 
 -------------------
        git clone git://github.com/X8462/FMS-Integration.git
   
   
   
-To report issues:
+[To report issues:](https://github.com/X8462/FMS-Integration/issues)
 -----------------
        https://github.com/X8462/FMS-Integration/issues
        or,
