@@ -1,4 +1,4 @@
-Facility Management System (FMS) (In Progress)
+[Facility Management System (FMS)](http://comp473-fms.herokuapp.com/) (In Progress)
 ===============================
 Author: Christina Bijayananda and Alex Okoli 
 
